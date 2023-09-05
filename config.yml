@@ -1,0 +1,37 @@
+server:
+    type: simple
+    applicationContextPath: /
+    connector:
+        type: http
+        port: 8123
+jmxproxy:
+    # how often for the cleaner thread to
+    # wake up to purge unaccessed hosts
+    # Time units: ns, us, ms, s, m, h, d
+    clean_interval: 1m
+
+    # how long to keep unaccessed hosts before purging
+    # by the cleaner thread
+    access_duration: 5m
+
+    # how long to cache JMX attribute values before
+    # reconnecting to the agent and pulling new data
+    cache_duration: 5m
+
+    # how long to wait on a new JMX connection before
+    # giving up with a not found error to the client
+    connect_timeout: 3s
+
+    # white list of allowed endpoints in host or host:port
+    # format for this agent to connect to, defaulting
+    # to allowing all when empty or missing
+#    allowed_endpoints:
+#        - 'localhost:7091'
+#        - 'jmxtest:7091'
+#        - 'host.docker.internal:7091'
+#        - 'dld.arces.unibo.it:7091'
+
+    # maximum number of historical attribute values to
+    # retain and provide when the history query parameter
+    # is specified to the attribute request call
+    history_size: 1
